@@ -1,7 +1,6 @@
 require 'sinatra'
 
-set :bind, '0.0.0.0'
-set :port, 4567
+set :host_authorization, { permitted_hosts: [] }
 
 get '/' do
   'It fuckin works!'
