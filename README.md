@@ -40,28 +40,27 @@ kubectl port-forward deployment/sinatra-webapp 8080:4567 --address 0.0.0.0
 curl localhost:8080
 ```
 ## 8. Viewing our cluster on Kubernetes Dashboard
-### 1. Install the dashboard (if not yet done)
+### a. Install the dashboard (if not yet done)
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
 ```
-### 2. Create a ServiceAccount in the kubernetes-dashboard namespace
+### b. Create a ServiceAccount in the kubernetes-dashboard namespace
 ```sh
 kubectl create serviceaccount dashboard-user -n kubernetes-dashboard
-```sh
-
-### 3. Bind the ServiceAccount to cluster-admin role (for full access)
+```
+### c. Bind the ServiceAccount to cluster-admin role (for full access)
 ```sh
 kubectl create clusterrolebinding dashboard-user-binding --clusterrole=cluster-admin --serviceaccount=kubernetes-dashboard:dashboard-user
 ```
 
-### 4. Generate the login token for the dashboard-user service account
+### d. Generate the login token for the dashboard-user service account
 ```sh
 kubectl -n kubernetes-dashboard create token dashboard-user
 ```
 
 > Save the token output, this will be used to log in to the dashboard
 
-### 5. Port-forward the Kubernetes Dashboard service inside Codespaces to port 8443
+### e. Port-forward the Kubernetes Dashboard service inside Codespaces to port 8443
 ```sh
 kubectl -n kubernetes-dashboard port-forward service/kubernetes-dashboard 8443:443
 ```
