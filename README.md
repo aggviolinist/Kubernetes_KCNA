@@ -41,21 +41,30 @@ curl localhost:8080
 ```
 ## 8. Viewing our cluster on Kubernetes Dashboard
 ### 1. Install the dashboard (if not yet done)
+```sh
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
-
+```
 ### 2. Create a ServiceAccount in the kubernetes-dashboard namespace
+```sh
 kubectl create serviceaccount dashboard-user -n kubernetes-dashboard
+```sh
 
 ### 3. Bind the ServiceAccount to cluster-admin role (for full access)
+```sh
 kubectl create clusterrolebinding dashboard-user-binding --clusterrole=cluster-admin --serviceaccount=kubernetes-dashboard:dashboard-user
+```
 
 ### 4. Generate the login token for the dashboard-user service account
+```sh
 kubectl -n kubernetes-dashboard create token dashboard-user
+```
 
 > Save the token output, this will be used to log in to the dashboard
 
 ### 5. Port-forward the Kubernetes Dashboard service inside Codespaces to port 8443
+```sh
 kubectl -n kubernetes-dashboard port-forward service/kubernetes-dashboard 8443:443
+```
 > View port 8443 from terminal
 
 ### We can view the dashboard this way if we are using cloud 9
