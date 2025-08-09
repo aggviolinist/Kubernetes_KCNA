@@ -1,32 +1,32 @@
 # Kubernetes_KCNA
 Repo to practice as I prepare for the Kubernetes_KCNA
 
-1. Installing all the dependencies needed to run the Sinatra ruby app
+## 1. Installing all the dependencies needed to run the Sinatra ruby app
 ```sh
 bundle install
 bundle add rackup puma
 bundle exec ruby server.rb
 ```
-2. Look at the webapp on the browser
+## 2. Look at the webapp on the browser
 ```sh
 curl localhost:4567
 ```
-3. Buld the docker container
+## 3. Buld the docker container
 ```sh
 docker build . -t sinatra-webapp-sample
 ```
 
-4. Deploy the docker file to ECR on AWS
+## 4. Deploy the docker file to ECR on AWS
 - Create ECR on AWS using console
 - Follow the upload instructions
 
-5. Since we have Minikube already, we don't need to download it
+## 5. Since we have Minikube already, we don't need to download it
 When we want to move a file to be used universally in a linux system we use
 ```sh
 sudo mv kubectl /usr/local/bin/
 ```
 
-6. Start kubectl
+## 6. Start kubectl
 ```sh
 minikube start
 kubectl apply -f k8s/deployment.yml
@@ -34,8 +34,34 @@ kubectl get deployments
 kubectl get pods
 ```
 
-7. Forward our 4567 port to 8080
+## 7. Forward our 4567 port to 8080
 ```sh
 kubectl port-forward deployment/sinatra-webapp 8080:4567 --address 0.0.0.0
 curl localhost:8080
+```
+## 8. Viewing our cluster on Kubernetes Dashboard
+### 1. Install the dashboard (if not yet done)
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+
+### 2. Create a ServiceAccount in the kubernetes-dashboard namespace
+kubectl create serviceaccount dashboard-user -n kubernetes-dashboard
+
+### 3. Bind the ServiceAccount to cluster-admin role (for full access)
+kubectl create clusterrolebinding dashboard-user-binding --clusterrole=cluster-admin --serviceaccount=kubernetes-dashboard:dashboard-user
+
+### 4. Generate the login token for the dashboard-user service account
+kubectl -n kubernetes-dashboard create token dashboard-user
+
+> Save the token output, this will be used to log in to the dashboard
+
+### 5. Port-forward the Kubernetes Dashboard service inside Codespaces to port 8443
+kubectl -n kubernetes-dashboard port-forward service/kubernetes-dashboard 8443:443
+> View port 8443 from terminal
+
+### We can view the dashboard this way if we are using cloud 9
+
+```sh
+minikube start --listen-address='0.0.0.0'
+kubectl proxy --address='0.0.0.0' --disable-filter=true
+minikube dashboard --url
 ```
