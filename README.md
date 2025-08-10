@@ -32,6 +32,7 @@ minikube start
 kubectl apply -f k8s/deployment.yml
 kubectl get deployments
 kubectl get pods
+kubectl get services/svc
 ```
 
 ## 7. Forward our 4567 port to 8080
