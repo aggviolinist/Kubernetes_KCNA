@@ -33,6 +33,7 @@ kubectl apply -f k8s/deployment.yml
 kubectl get deployments
 kubectl get pods
 kubectl get services/svc
+kubectl get pods -o wide
 ```
 
 ## 7. Forward our 4567 port to 8080
