@@ -120,3 +120,7 @@ Running the nodeport
 minikube service service-nodeport --url
 curl http://192.x.x.2:30001
 ```
+```sh
+kubectl delete svc service-nodeport
+kubectl get svc
+```
