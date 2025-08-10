@@ -86,6 +86,8 @@ kubectl get pods - busy box is up and running
 Inside busy box
 ```sh
 kubectl get pods -o wide
+
+kubectl run -it --rm --restart=Never busybox --image=busybox -- sh
 wget 10.0.0.1:4567 -- Grab the IP address of the pod
 cat index.html
 ```
@@ -96,12 +98,11 @@ kubectl apply -f k8s/service-clusterip.yml
 kubectl get svc  -- our custom service is part of clusterIP
 kubectl describe svc -- Grab the IP address on there
 ```
-Inside busy box
+Running the cluster node inside busy box
 ```sh
-
-kubectl port-forward deployment/sinatra-webapp 8080:4567 --address 0.0.0.0
-
 kubectl get pods -o wide
+
+kubectl run -it --rm --restart=Never busybox --image=busybox -- sh
 wget 10.0.0.1:8080 -- Grab the IP address of our clusterIP
 cat index.html
 kubectl delete svc sinatra-webapp -- Delete our custom ClusterIP
@@ -113,4 +114,9 @@ This is useful when we want to access our cluster using our nodeport
 kubectl apply -f k8s/service-nodeport.yml
 kubectl get svc
 kubectl describe svc
+```
+Running the nodeport
+```sh
+minikube service service-nodeport --url
+curl http://192.x.x.2:30001
 ```
