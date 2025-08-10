@@ -77,7 +77,8 @@ minikube dashboard --url
 ```
 
 # Pods communicating with each other using BUSY BOX
-## 9. Download busy box using
+## 9. Pod IP communication (Dynamic) 
+Download busy box using the commands below
 ```sh
 kubectl run -it --rm --restart=Never busybox --image=busybox -- sh
 kubectl get pods - busy box is up and running
@@ -88,7 +89,7 @@ kubectl get pods -o wide
 wget 10.0.0.1:4567 -- Grab the IP address of the pod
 cat index.html
 ```
-## 10. Using ClusterIP to access cluster
+## 10. Using ClusterIP to access cluster (static)
 This is useful if we want to cummunicate with other clusters using a static IP address
 ```sh
 kubectl apply -f k8s/service-clusterip.yml
@@ -97,6 +98,9 @@ kubectl describe svc -- Grab the IP address on there
 ```
 Inside busy box
 ```sh
+
+kubectl port-forward deployment/sinatra-webapp 8080:4567 --address 0.0.0.0
+
 kubectl get pods -o wide
 wget 10.0.0.1:8080 -- Grab the IP address of our clusterIP
 cat index.html
