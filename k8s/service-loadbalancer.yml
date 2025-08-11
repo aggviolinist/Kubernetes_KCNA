@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-loadbalancer
+spec: 
+  selector: 
+    app.kubernetes.io/name: sinatra-webapp
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 4567
+  clusterIP: 127.0.0.1
+  type: LoadBalancer
+status:
+  LoadBalancer:
+    ingress:
+      - ip: 192.0.2.127
