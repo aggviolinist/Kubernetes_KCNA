@@ -5,13 +5,12 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: hello-world.example
-      http:
+    - http:
         paths:
-          - path: /
+          - path: /sinatra-webapp
             pathType: Prefix
             backend:
               service:
-                name: web
+                name: sinatra-webapp
                 port:
                   number: 8080
