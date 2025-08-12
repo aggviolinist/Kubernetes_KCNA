@@ -125,7 +125,7 @@ kubectl delete svc service-nodeport
 kubectl get svc
 ```
 
-## 12. Conneccting loadblancer to our cluster
+## 12. Connecting loadblancer to our cluster
 Useful when we want to distribute traffic in our cluster
 - Note the Loadbalancer we use is Network Loadbalancer(T3/TCP/UDP)
 ```sh
@@ -136,4 +136,21 @@ kubectl describe svc
 Getting where our cluster is running at 
 ```sh
 kubectl cluster-info
+```
+
+## 13. Debugging our DNS
+> https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/
+```sh
+kubectl apply -f https://k8s.io/examples/admin/dns/dnsutils.yaml
+kubectl get pods dnsutils
+kubectl exec -i -t dnsutils -- nslookup kubernetes.default
+```
+## 14. Ingress
+We need to enable the ingress controller
+```sh
+minikube addons enable ingress
+```
+Verify that the NGINX Ingress controller is running
+```sh
+kubectl get pods -n ingress-nginx
 ```
