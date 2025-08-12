@@ -108,7 +108,7 @@ cat index.html
 kubectl delete svc sinatra-webapp -- Delete our custom ClusterIP
 ```
 
-## 11. Using Nodeport to access cluster
+## 11. Using Nodeport to access cluster (using port to connect to cluster)
 This is useful when we want to access our cluster using our nodeport
 ```sh
 kubectl apply -f k8s/service-nodeport.yml
@@ -123,4 +123,17 @@ curl http://192.x.x.2:30001
 ```sh
 kubectl delete svc service-nodeport
 kubectl get svc
+```
+
+## 12. Conneccting loadblancer to our cluster
+Useful when we want to distribute traffic in our cluster
+- Note the Loadbalancer we use is Network Loadbalancer(T3/TCP/UDP)
+```sh
+kubectl apply -f k8s/service-loadbalancer.yml
+kubectl get svc
+kubectl describe svc
+```
+Getting where our cluster is running at 
+```sh
+kubectl cluster-info
 ```
