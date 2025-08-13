@@ -146,6 +146,7 @@ kubectl get pods dnsutils
 kubectl exec -i -t dnsutils -- nslookup kubernetes.default
 ```
 ## 14. Ingress
+> https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
 We need to enable the ingress controller
 ```sh
 minikube addons enable ingress
@@ -153,4 +154,71 @@ minikube addons enable ingress
 Verify that the NGINX Ingress controller is running
 ```sh
 kubectl get pods -n ingress-nginx
+```
+Expose the port to the net
+```sh
+kubectl expose deployment sinatra-webapp --type=NodePort --port=8080
+```
+Check out the service
+```sh
+kubectl get service sinatra-webapp
+```
+Get the url
+```sh
+minikube service sinatra-webapp --url
+```
+Get info
+```sh
+curl http://172.17.0.15:31637 
+```
+Deploy the ingress
+```sh
+kubectl apply -f k8s/ingress.yaml
+kubectl get ingress
+```
+
+## 15. Create jobs
+> https://kubernetes.io/docs/reference/kubectl/quick-reference/
+```sh
+kubectl create job hello --image=busybox:1.28 -- echo "Learning k8s meehhnn"
+```
+> https://devhints.io/cron
+Cron job that prints `hello` world every second
+```sh
+kubectl create cronjob hello --image=busybox:1.28   --schedule="*/1 * * * *" -- echo "Hello World"
+```
+
+## 16. Replicasets
+We define them on our deployments. We also specify how many we want
+```sh
+replicas: 2
+```
+Confirming their implementation
+```sh
+kubectl get pods sinatra-webapp-f5b7cfff7-t5hz9
+kubectl describe pods sinatra-webapp-f5b7cfff7-t5hz9
+```
+## 17. Scale
+Scaling our replicas
+```sh
+kubectl scale --replicas=4 deploy/sinatra-webapp
+```
+Confirming our replicas
+```sh
+kubectl get deploy
+kubectl get pods
+kubectl describe svc sinatra-webapp
+kubectl get svc sinatra-webapp
+```
+## 18. Auto Scaling (HPA)
+We want to scale our deployments, remember we can't scale pods/svc's
+```sh
+kubectl autoscale deployment sinatra-webapp --cpu-percent=50 --min=3 --max=10
+```
+Confirming if our code works
+```sh
+kubectl get deploy
+kubectl get pods
+kubectl describe svc sinatra-webapp
+kubectl get svc sinatra-webapp
 ```

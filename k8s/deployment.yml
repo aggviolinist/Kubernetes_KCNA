@@ -8,6 +8,7 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: sinatra-webapp
+  replicas: 2   # Replica added to our manifest
   template:
     metadata:
       labels:
