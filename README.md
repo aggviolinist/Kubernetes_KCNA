@@ -222,3 +222,4 @@ kubectl get pods
 kubectl describe svc sinatra-webapp
 kubectl get svc sinatra-webapp
 ```
+> ![Alt text](images/hpa.png?raw=true "The hpa output")

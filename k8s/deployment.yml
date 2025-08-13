@@ -32,3 +32,8 @@ spec:
           initialDelaySeconds: 10
           periodSeconds: 10
           timeoutSeconds: 2
+        resources: # This is helps us monitor CPU utlization of our pods for HPA
+          requests:
+            cpu: "100m"
+          limits:
+            cpu: "500m"
