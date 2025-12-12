@@ -228,7 +228,8 @@ Inspecting pods
  - desired state (.spec)
  - current observed state (.status)
 ```sh
-kubectl get pods hello-pod -o yaml   
+kubectl get pods hello-pod -o yaml
+kubectl get pods hello-pod -o wide   
 ```
 ```sh
 kubectl describe pods hello-pod
@@ -236,9 +237,15 @@ kubectl describe pods <pod>
 ```
 log-in to containers running in Pods
 ```sh
-kubectl exec hello-pod -- ps aux
+kubectl exec -it voting-app-deploy-777c699fdf-5xxtx -- sh
+kubectl exec -it voting-app-deploy-777c699fdf-5xxtx -- bash
 # apk add curl
 # curl localhost:8080
+```
+trying to see if the front end is displaying manually
+```sh
+kubectl port-forward pod/voting-app-deploy-777c699fdf-5xxtx 8080:80
+curl http://localhost:8080
 ```
 ```sh
 kubectl logs <pod>
@@ -246,5 +253,14 @@ kubectl logs <pod>
 ```sh
 # exit
 kubectl delete -f pod.yml
+```
+## 20. Deployment
+```sh
+kubectl describe deploy hello-deploy
+kubectl get deploy hello-deploy
+```
+monitor the progress of the rolling update
+```sh
+kubectl rollout status deployment hello-deploy
 ```
 
