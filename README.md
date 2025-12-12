@@ -223,3 +223,28 @@ kubectl describe svc sinatra-webapp
 kubectl get svc sinatra-webapp
 ```
 > ![Alt text](images/hpa.png?raw=true "The hpa output")
+## 19. Pods
+Inspecting pods
+ - desired state (.spec)
+ - current observed state (.status)
+```sh
+kubectl get pods hello-pod -o yaml   
+```
+```sh
+kubectl describe pods hello-pod
+kubectl describe pods <pod>
+```
+log-in to containers running in Pods
+```sh
+kubectl exec hello-pod -- ps aux
+# apk add curl
+# curl localhost:8080
+```
+```sh
+kubectl logs <pod>
+```
+```sh
+# exit
+kubectl delete -f pod.yml
+```
+
