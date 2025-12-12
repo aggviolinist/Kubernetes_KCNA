@@ -262,5 +262,7 @@ kubectl get deploy hello-deploy
 monitor the progress of the rolling update
 ```sh
 kubectl rollout status deployment hello-deploy
+kubectl rollout history deployment hello-deploy
+kubectl get rs
 ```
 
