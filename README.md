@@ -268,6 +268,7 @@ kubectl get rs
 ## 21. Probes
 Probe Types
 > ![Alt text](images/probe_types.png?raw=true "The probe types")
+
 Probe Applications
 > ![Alt text](images/probe_app.png?raw=true "The probe applications")
 
