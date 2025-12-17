@@ -265,4 +265,10 @@ kubectl rollout status deployment hello-deploy
 kubectl rollout history deployment hello-deploy
 kubectl get rs
 ```
+## 21. Probes
+Probe Types
+> ![Alt text](images/probe_app.png?raw=true "The probe types")
+Probe Applications
+> ![Alt text](images/probe_app.png?raw=true "The probe applications")
+
 
