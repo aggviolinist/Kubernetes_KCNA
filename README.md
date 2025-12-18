@@ -276,4 +276,15 @@ Probe Applications
 
 > ![Alt text](images/probe_app.png?raw=true "The probe applications")
 
+## 22. Services
+Creating services imperatively
+```sh
+kubectl expose deployment web-deploy \
+--name=hello-svc \
+--target-port=8080 \
+--type=NodePort
+
+service/hello-svc exposed
+```
+
 
