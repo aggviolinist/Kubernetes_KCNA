@@ -122,6 +122,7 @@ curl http://192.x.x.2:30001
 ```
 ```sh
 kubectl delete svc service-nodeport
+kubectl delete -f deploy.yml #delete deployment
 kubectl get svc
 ```
 
