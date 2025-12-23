@@ -1,5 +1,10 @@
 # Kubernetes_KCNA
 Repo to practice as I prepare for the Kubernetes_KCNA
+#0
+Getting the short names of commands 
+```sh
+kubectl api-resources
+```
 
 ## 1. Installing all the dependencies needed to run the Sinatra ruby app
 ```sh
@@ -286,5 +291,6 @@ kubectl expose deployment web-deploy \
 
 service/hello-svc exposed
 ```
+
 
 
