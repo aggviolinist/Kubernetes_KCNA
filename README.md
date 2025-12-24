@@ -1,4 +1,4 @@
-# Kubernetes_KCNA
+# Master K8s
 Repo to practice as I prepare for the Kubernetes_KCNA
 #0
 Getting the short names of commands 
