@@ -292,7 +292,7 @@ kubectl expose deployment web-deploy \
 service/hello-svc exposed
 ```
 ## 22. ConfigMap
-Confirming if our configured to our pod
+Confirming if our configmap is configured to our pod
 ```sh
 kubectl exec nameofpod -- env | grep NAME
 kubectl exec nameofpod -- ls /etc/name
