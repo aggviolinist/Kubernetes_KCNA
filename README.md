@@ -295,6 +295,7 @@ service/hello-svc exposed
 Confirming if our configured to our pod
 ```sh
 kubectl exec nameofpod -- env | grep NAME
+kubectl exec nameofpod -- ls /etc/name
 ```
 
 
