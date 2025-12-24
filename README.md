@@ -299,11 +299,11 @@ kubectl exec nameofpod -- ls /etc/name
 ```
 
 ## 23. Stateful Sets
-It's for stateful workloads (Databases, Kafka, Zookeeper), AKA sensitive/ catastrophic loads that one pod would break the appllication
-Do their own self healing while Deployments use ReplicaSets
-Start from 0,1,2,3,4 whne scaling and scale down the same way 4,3,2,1,0 
-When deleting/ scaling down, PVCs are not deleted WHY??? Controllers manage pods — users manage data
-safely stops all pods without touching data
+- It's for stateful workloads (Databases, Kafka, Zookeeper), AKA sensitive/ catastrophic loads that one pod would break the appllication
+- Do their own self healing while Deployments use ReplicaSets
+- Start from 0,1,2,3,4 whne scaling and scale down the same way 4,3,2,1,0 
+- When deleting/ scaling down, PVCs are not deleted WHY??? Controllers manage pods — users manage data
+- safely stops all pods without touching data
 ```sh
 kubectl scale statefulset --replicas=0
 ```
