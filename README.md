@@ -332,6 +332,10 @@ vim pod-security.yaml
 ```sh
 vim pod-capabilities.yaml
 ```
+PodSecurityPolicy
+```sh
+vim pod-security-policy.yaml
+```
 
 
 
