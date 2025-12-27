@@ -307,6 +307,19 @@ kubectl exec nameofpod -- ls /etc/name
 ```sh
 kubectl scale statefulset --replicas=0
 ```
+## 24. Resource Quotas
+Setting resource Quotas
+```sh
+vim pod-quotas.yaml
+```
+```sh
+kubectl get resourcequota -n dev
+```
+Count number of pods
+```sh
+kubectl get pods -n dev --no-headers | wc -l
+```
+
 
 
 
