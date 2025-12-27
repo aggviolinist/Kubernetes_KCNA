@@ -319,7 +319,11 @@ Count number of pods
 ```sh
 kubectl get pods -n dev --no-headers | wc -l
 ```
-
+## 25. Security 
+Pod security is important, we must ensure pods dont run as root!
+```sh
+vim pod-security.yaml
+```
 
 
 
