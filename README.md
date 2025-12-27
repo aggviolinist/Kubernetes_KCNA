@@ -320,7 +320,9 @@ Count number of pods
 kubectl get pods -n dev --no-headers | wc -l
 ```
 ## 25. Security 
-Pod security is important, we must ensure pods dont run as root!
+- Pod security is important, we must ensure pods dont run as root!
+- Container-level securityContext overrides pod-level securityContext.
+- Container-level securityContext is more secure and more correct
 ```sh
 vim pod-security.yaml
 ```
