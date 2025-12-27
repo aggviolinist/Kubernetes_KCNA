@@ -326,6 +326,13 @@ kubectl get pods -n dev --no-headers | wc -l
 ```sh
 vim pod-security.yaml
 ```
+- Dropping capabilities just like IAM roles, linux has an option of choosing the capabilities a container should get to run not as root but also not as non-root
+- Filtering syscalls using `seccomp` on pod level
+- Prevent privilege escalation by containers `allowPrivilegeEscalation: false` 
+```sh
+vim pod-capabilities.yaml
+```
+
 
 
 
