@@ -336,6 +336,10 @@ PodSecurityPolicy
 ```sh
 vim pod-security-policy.yaml
 ```
+Since PSP is depracted we need to use PSS
+```sh
+kubectl label namespace my-app pod-security.kubernetes.io/enforce=restricted
+```
 
 
 
