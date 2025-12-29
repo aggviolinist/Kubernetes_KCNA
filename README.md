@@ -198,6 +198,7 @@ kubectl create cronjob hello --image=busybox:1.28   --schedule="*/1 * * * *" -- 
 We define them on our deployments. We also specify how many we want
 ```sh
 replicas: 2
+kubectl scale --replicas=2 -f replicaset-def.yaml
 ```
 Confirming their implementation
 ```sh
