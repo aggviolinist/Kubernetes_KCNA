@@ -199,6 +199,11 @@ We define them on our deployments. We also specify how many we want
 ```sh
 replicas: 2
 kubectl scale --replicas=2 -f replicaset-def.yaml
+kubectl scale --replicas=3 rs app-rs-1
+```
+editing 
+```sh
+kubectl edit rs app-rs-1 
 ```
 Confirming their implementation
 ```sh
