@@ -288,8 +288,9 @@ kubectl expose deployment web-deploy \
 --name=hello-svc \
 --target-port=8080 \
 --type=NodePort
-
 service/hello-svc exposed
+
+kubectl expose pods nginx --port 80 --type NodePort
 ```
 ## 22. ConfigMap
 Confirming if our configmap is configured to our pod
