@@ -271,6 +271,12 @@ kubectl rollout status deployment hello-deploy
 kubectl rollout history deployment hello-deploy
 kubectl get rs
 ```
+
+Dry runs
+```sh
+kubectl run redis --image=redis --dry-run=client -o yaml > redis.yaml
+vim redis.yaml
+```
 ## 21. Probes
 Probe Types
 
