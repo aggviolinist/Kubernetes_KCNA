@@ -332,7 +332,13 @@ Count number of pods
 ```sh
 kubectl get pods -n dev --no-headers | wc -l
 ```
-## 25. Security 
+## 25. Busybox
+For busy box, we need to add a `command` because it starts and immediately exit, so Kubernetes thinks it failed and restarts it.
+```sh
+command: ["sleep","3600"]
+```
+
+## 26. Security 
 - Pod security is important, we must ensure pods dont run as root!
 - Container-level securityContext overrides pod-level securityContext.
 - Container-level securityContext is more secure and more correct
