@@ -5,6 +5,10 @@ Getting the short names of commands
 ```sh
 kubectl api-resources
 ```
+Changing from default to dev 
+```sh
+kubectl config set-context $(kubectl config current-context)  --namespace =dev
+```
 
 ## 1. Installing all the dependencies needed to run the Sinatra ruby app
 ```sh
