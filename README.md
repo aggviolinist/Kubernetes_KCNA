@@ -308,6 +308,10 @@ service/hello-svc exposed
 
 kubectl expose pods nginx --port 80 --type NodePort
 ```
+Creating a Pod and Exposing It as a Service
+```sh
+kubectl run httpd --image=httpd:alpine --port=80  --expose
+```
 ## 22. ConfigMap
 Confirming if our configmap is configured to our pod
 ```sh
