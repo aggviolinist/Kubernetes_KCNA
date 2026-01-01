@@ -5,6 +5,10 @@ Getting the short names of commands
 ```sh
 kubectl api-resources
 ```
+Updating changes
+```sh
+kubectl replace --force -f updates.yaml
+```
 Changing from default to dev 
 ```sh
 kubectl config set-context $(kubectl config current-context)  --n =dev
